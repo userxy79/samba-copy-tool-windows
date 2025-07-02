@@ -3,6 +3,8 @@
 The **Samba Copy Tool** is a lightweight, user-friendly utility designed to simplify file transfers between Windows systems and Samba (SMB) network shares. 
 It provides a graphical interface for uploading and downloading files, with optional logging and robust conflict handling — all powered by PowerShell and Robocopy.
 
+![tool_screenshot](https://github.com/user-attachments/assets/30824e59-044d-4a32-8207-c26986513627)
+
 ---
 
 ## 🚀 Why This Tool Exists
