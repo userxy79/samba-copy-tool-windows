@@ -77,7 +77,7 @@ Install-Module -Name ps2exe -Scope CurrentUser -Force
 
 Use the following script to compile your own .exe:
 
-##Beginn
+<pre>
 # === Configuration ===
 $scriptPath  = "smb-copytool.ps1"           # Your PowerShell script
 $outputExe   = "smb-copytool.exe"           # Output EXE file
@@ -99,8 +99,8 @@ Invoke-PS2EXE `
     -Title $title `
     -Description $description
 
-Write-Host "`n Done! The file '$outputExe' has been created."
-##END
+Write-Host "`n✅ Done! The file '$outputExe' has been created."
+</pre>
 
 You can save this as build-smb-copytool-exe.ps1 and run it anytime you want to rebuild the .exe.
 
