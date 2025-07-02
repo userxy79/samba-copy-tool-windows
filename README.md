@@ -60,7 +60,9 @@ It is especially useful in environments where users need to interact with shared
 ### ▶️ Run the Script Directly in Powershell
 
 powershell -ExecutionPolicy Bypass -File .\smb-copytool.ps1
+
 This will launch the graphical interface and allow you to upload or download files via SMB.
+
 
 ### 🛠️ Build Your Own .exe in Powershell (Optional)
 If you don't trust precompiled binaries (and you shouldn't blindly trust any), you can build your own .exe from the source script using PS2EXE.
@@ -68,12 +70,14 @@ If you don't trust precompiled binaries (and you shouldn't blindly trust any), y
 ### 🔧 Step-by-step:
 Make sure you have PowerShell 5.1 or later
 
-Install the PS2EXE module (if not already installed):
+Install the PS2EXE module in Powershell (if not already installed):
 
 Install-Module -Name ps2exe -Scope CurrentUser -Force
+
+
 Use the following script to compile your own .exe:
 
-
+##Beginn
 # === Configuration ===
 $scriptPath  = "smb-copytool.ps1"           # Your PowerShell script
 $outputExe   = "smb-copytool.exe"           # Output EXE file
@@ -96,6 +100,8 @@ Invoke-PS2EXE `
     -Description $description
 
 Write-Host "`n Done! The file '$outputExe' has been created."
+##END
+
 You can save this as build-smb-copytool-exe.ps1 and run it anytime you want to rebuild the .exe.
 
 ---
