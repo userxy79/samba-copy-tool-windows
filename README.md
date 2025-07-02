@@ -59,7 +59,9 @@ It is especially useful in environments where users need to interact with shared
 
 ### ▶️ Run the Script Directly in Powershell
 
+<pre>
 powershell -ExecutionPolicy Bypass -File .\smb-copytool.ps1
+</pre>pre>
 
 This will launch the graphical interface and allow you to upload or download files via SMB.
 
@@ -72,7 +74,9 @@ Make sure you have PowerShell 5.1 or later
 
 Install the PS2EXE module in Powershell (if not already installed):
 
+<pre>
 Install-Module -Name ps2exe -Scope CurrentUser -Force
+</pre>pre>
 
 
 Use the following script to compile your own .exe:
