@@ -1,7 +1,5 @@
-# samba-copy-tool-windows
 Samba Copy Tool for Windows – Fast SMB Upload/Download with GUI
 =======
-# Samba Copy Tool
 
 The **Samba Copy Tool** is a lightweight, user-friendly utility designed to simplify file transfers between Windows systems and Samba (SMB) network shares. 
 It provides a graphical interface for uploading and downloading files, with optional logging and robust conflict handling — all powered by PowerShell and Robocopy.
@@ -26,11 +24,17 @@ It is especially useful in environments where users need to interact with shared
 
 ## 🛠 What It Does
 
-- ✅ Upload files to a Samba/SMB share
-- ✅ Download files from a Samba/SMB share
-- ✅ Show a progress window with transfer speed
-- ✅ Handle file conflicts (overwrite, rename, skip)
+- ✅ Upload files, folders or both to a Samba/SMB share
+- ✅ Download files, folders or both from a Samba/SMB share
+- ✅ Dry Run mode (simulate transfers without copying)
+- ✅ Progress window with ETA and transfer speed
+- ✅ Automatic conflict resolution with:
+  - Overwrite
+  - Rename (with timestamp)
+  - Skip
+- ✅ "Apply to all" option for batch conflict handling
 - ✅ Optionally create a log file in the user’s Documents folder
+- ✅ Transfer summary at the end
 - ✅ Run as a `.ps1` script or compiled `.exe` (via PS2EXE)
 
 ---
@@ -47,7 +51,7 @@ It is especially useful in environments where users need to interact with shared
 ## 📦 Who Is It For?
 
 - IT admins who want to provide a safe, simple transfer tool to users
-- End users who need to copy files to/from a network share without using the command line
+- End users who need to copy files or folders to/from a network share without using the command line
 - Anyone looking for a portable, GUI-based alternative to Robocopy
 
 ---
@@ -60,13 +64,46 @@ It is especially useful in environments where users need to interact with shared
 
 ---
 
+## 🧠 Usage Notes
+
+### Dry Run Mode
+
+When enabled in the startup dialog, the tool simulates the transfer process without copying any files or folders.  
+This is useful for testing and previewing actions.
+
+### Rename with Timestamp
+
+If you choose "Rename" and check "Apply to all" during a conflict, all remaining conflicting files or folders will be renamed automatically using a timestamp format:
+
+Example: `report.pdf` → `report - 20250705_143012_842.pdf`
+
+This ensures unique names and prevents overwriting.
+
+### Transfer Summary
+
+At the end of each transfer, a summary dialog shows how many files and folders were:
+
+- ✔ Copied
+- 📝 Renamed
+- ⏭ Skipped
+
+Example:
+<pre>
+✔ Files copied: 4 
+📝 Files renamed: 2 
+⏭ Files skipped: 1 
+📁 Folders copied: 3 
+📂 Folders skipped: 0
+</pre>
+---
+
 ## 🗂️ Log Files
 
 If logging is enabled, the tool creates a log file in the user's **Documents** folder:
 
-C:\Users\<YourUsername>\Documents\smb-copytool-log.txt
+C:\Users\<YourUsername>\Documents\SambaCopyTool\Logs\smb-copytool.log
 
-The log includes timestamps, source/destination paths, and Robocopy output.  
+The log includes timestamps, source/destination paths, conflict decisions, and Robocopy output.  
 This is useful for troubleshooting or auditing file transfers.
 
 ---
@@ -74,7 +111,7 @@ This is useful for troubleshooting or auditing file transfers.
 
 ## 🧪 How to Use and Build This Tool Yourself
 
-### ▶️ Run the Script Directly in Powershell
+### ▶️ Run the Script Directly in PowerShell
 
 <pre>
 powershell -ExecutionPolicy Bypass -File .\smb-copytool.ps1
@@ -83,13 +120,13 @@ powershell -ExecutionPolicy Bypass -File .\smb-copytool.ps1
 This will launch the graphical interface and allow you to upload or download files via SMB.
 
 
-### 🛠️ Build Your Own .exe in Powershell (Optional)
+### 🛠️ Build Your Own .exe in PowerShell (Optional)
 If you don't trust precompiled binaries (and you shouldn't blindly trust any), you can build your own .exe from the source script using PS2EXE.
 
 ### 🔧 Step-by-step:
 Make sure you have PowerShell 5.1 or later
 
-Install the PS2EXE module in Powershell (if not already installed):
+Install the PS2EXE module in PowerShell (if not already installed):
 
 <pre>
 Install-Module -Name ps2exe -Scope CurrentUser -Force
@@ -142,6 +179,6 @@ This project is released under the MIT License. See `LICENSE` for details.
 
 ---
 
-## Final Notice
+🙌 Acknowledgments
 
-This tool was created with helpful support from MS Copilot.
+This tool was created with helpful support from **Microsoft Copilot**.
